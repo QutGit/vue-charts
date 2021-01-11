@@ -1,0 +1,135 @@
+a,body,ins {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
+body,html{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-icon,.nav-item .text {
+  opacity: .9
+}
+
+article,aside,blockquote,body,button,code,dd,details,div,dl,dt,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,hr,input,legend,li,menu,nav,ol,p,pre,section,td,textarea,th,ul {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+*,:after,:before {
+  box-sizing: border-box
+}
+
+body {
+  // font: 14px "Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","黑体",sans-serif
+}
+
+body{
+  font-family: "Helvetica Neue",Arial,"PingFang SC","Hiragino Sans GB","Microsoft Yahei"!important;
+}
+
+body{
+  // font-family: "PingFangSC-Regular","Microsoft Yahei", "Helvetica Neue"!important;
+  // font-family: PingFangSC-Regular, sans-serif!important;
+}
+
+input,select,textarea {
+  font-size: 100%
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+fieldset,img {
+  border: none
+}
+i{
+  font-style: normal;
+}
+
+abbr,acronym {
+  border: none;
+  font-variant: normal
+}
+
+del {
+  text-decoration: line-through
+}
+
+ol,ul {
+  list-style: none
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-size: 100%;
+  font-weight: 400;
+  line-height: inherit
+}
+
+a:hover {
+  text-decoration: underline
+}
+
+:focus,a:focus {
+  outline: 0
+}
+
+input::-webkit-input-placeholder,textarea::-webkit-input-placeholder {
+  color: #bfbfbf
+}
+
+input::-moz-placeholder,textarea::-moz-placeholder {
+  color: #bfbfbf
+}
+
+input:-ms-input-placeholder,textarea:-ms-input-placeholder {
+  color: #bfbfbf
+}
+
+pre {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap
+}
+
+.clearfix:after,.clearfix:before {
+  content: "";
+  display: table
+}
+
+.clear,.clearfix:after {
+  clear: both;
+  display: block;
+  height: 0;
+  line-height: 0;
+  overflow: hidden
+}
+
+.clearfix:after {
+  visibility: hidden
+}
+
+.clearfix {
+  zoom:1}
+
+.clear {
+  font-size: 0
+}

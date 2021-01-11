@@ -1,0 +1,12 @@
+@import './nprogress.scss';
+@import './base.scss';
+@import './text.scss';
+@import './animate.scss';
+@import './search.scss';
+@import './theme.scss';
+
+
+// 在样式中导出，引入js中以后可以当js变量的方式使用
+// :export {
+//   animationMillis: $animation-length-ms;
+// }

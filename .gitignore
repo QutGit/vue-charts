@@ -1,0 +1,10 @@
+node_modules
+dist
+.tmp
+.sass-cache
+.idea
+bower_components
+.DS_Store
+package-lock.json
+yarn-lock.json
+.vscode

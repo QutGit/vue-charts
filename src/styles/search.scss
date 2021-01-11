@@ -1,0 +1,132 @@
+.el-dialog__body{
+  padding-top: 10px!important;
+  height: 140px;
+}
+// 分页样式
+.pagedevide{
+  text-align: right;
+  padding-right: 24px;
+  padding-top: 14px;
+  padding-bottom: 20px;
+}
+// 分页公共样式
+.pagination-slot{
+  display: inline-block;
+  color: $black;
+  font-size: 12px;
+  margin-right: 14px;
+  >span{
+    vertical-align: middle;
+    font-weight: 400;
+    text-align: center;
+    color: #6E80F2;
+  }
+  >b{
+    vertical-align: middle;
+    font-style: normal;
+    font-weight: 400;
+    display: inline-block;
+    line-height: 28px;
+  }
+}
+// 查询按钮公共样式
+.btn-search{
+  width:70px;
+  height:32px;
+  background: #6E80F2;
+  border-radius:2px;
+  font-weight: 400;
+  border: none;
+  margin-left: 12px;
+  color: #ffffff;
+}
+.export{
+  position: absolute;
+  cursor: pointer;
+  top: 22px;
+  right: 24px;
+  height: 100%;
+  >img{
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+  >span{
+    vertical-align: middle;
+  }
+}
+// 列表查询公共样式
+.filter-content{
+  background: $white;
+  padding: 24px;
+  // 查询输入框
+  .i-search-input{
+    width: 300px;
+    .icon-search{
+      width: 20px;
+      height: 20px;
+      margin-top: 6px;
+    }
+  }
+  // 下拉选择框
+  .s-option{
+    display: inline-block;
+    margin-left: 20px;
+    .s-elselect{
+      width: 120px;
+      margin-left: 10px;
+    }
+  }
+  // 日期类型 下拉选择框
+  .datetype-select{
+    width: 120px;
+    margin-left: 20px;
+  }
+  // 日期选择框
+  .date-picker{
+    display: inline-block;
+    margin-left: 10px;
+    .picker{
+      width: 130px;
+    }
+    >span{
+      margin: 0 6px;
+    }
+  }
+  // 开始时间-结束时间样式
+  .datepicker{
+    display: inline-block;
+    margin-left: 20px;
+    .start-month, .end-month{
+      display: inline-block;
+      width: 130px;
+      height: 32px;
+      background:rgba(247,247,247,1);
+    }
+    .start-date, .end-date{
+      width: 130px;
+      height: 32px;
+    }
+    .label{
+      margin-right: 10px;
+    }
+    .line{
+      margin: 0 6px;
+    }
+  }
+}
+.pointer{
+  cursor: pointer;
+}
+.check-content{
+  >span{
+    margin-right: 10px;
+  }
+  .checks{
+    display: inline-block;
+  }
+  padding-bottom: 24px;
+  padding-left: 24px;
+  background: $white;
+}
