@@ -59,3 +59,22 @@ Number.prototype.toFixed = String.prototype.toFixed = function (decimal) {
   }
   return digits.slice(0, decimalIndex + decimal + 1).join('');
 }
+
+// 流下载
+export function downloadFile (blob, tagFileName, fileType) {
+    let downloadElement = document.createElement('a')
+    let href = blob
+    if (typeof blob == 'string') {
+      downloadElement.target = '_blank'
+    } else {
+      href = window.URL.createObjectURL(blob) //创建下载的链接
+    }
+    downloadElement.href = href
+    downloadElement.download = tagFileName + '.' + fileType //下载后文件名
+    document.body.appendChild(downloadElement)
+    downloadElement.click() //点击下载
+    document.body.removeChild(downloadElement) //下载完成移除元素
+    if (typeof blob != 'string') {
+      window.URL.revokeObjectURL(href) //释放掉blob对象
+    }
+  }

@@ -19,13 +19,13 @@ const actions = {
   getUserInfo({commit}){
     let self = this;
     return new Promise((resolve, reject) =>{
-      getUser({isWrap: true}).then((result) =>{
-        if(result.status === 200){
-          let userInfo = result.data;
-          commit("USER_INFO", userInfo);
-          resolve(result)
-        }
-      });
+      // getUser({isWrap: true}).then((result) =>{
+      //   if(result.status === 200){
+      //     let userInfo = result.data;
+      //     commit("USER_INFO", userInfo);
+      //     resolve(result)
+      //   }
+      // });
     })
   },
 }

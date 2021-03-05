@@ -20,82 +20,13 @@ export const baseRouter = [
         component: () => import(/* webpackChunkName: "Home" */ '../views/home/Home.vue')
       },
       {
-        path: '/mobile',
-        name: 'mobile',
+        path: '/sticky',
+        name: 'sticky',
         meta: {
-          title: '修改登录手机',
-          expetc: true
+          title: '层级'
         },
-        component: () => import(/* webpackChunkName: "Home" */ '../views/home/Mobile.vue')
-      },
-      {
-        path: '/login',
-        name: 'login',
-        meta: {
-          title: '登录',
-          expetc: true
-        },
-        component: () => import(/* webpackChunkName: "login" */ '../views/login/Login.vue')
-      },
-      {
-        path: '/forgot',
-        name: 'forgot',
-        meta: {
-          title: '找回密码',
-          expetc: true
-        },
-        component: () => import(/* webpackChunkName: "login" */ '../views/login/Forgot.vue')
-      },
-      {
-        path: '/validate',
-        name: 'validate',
-        meta: {
-          title: '获取手机验证码',
-          expetc: true
-        },
-        component: () => import(/* webpackChunkName: "Home" */ '../views/home/Validate.vue')
-      },
-      {
-        path: '/changepwd',
-        name: 'changepwd',
-        meta: {
-          title: '修改登录密码',
-          expetc: true
-        },
-        component: () => import(/* webpackChunkName: "Home" */ '../views/login/Password.vue')
-      },
-      {
-        path: '/inputpwd',
-        name: 'inputpwd',
-        meta: {
-          title: '修改登录密码',
-          expetc: true
-        },
-        component: () => import(/* webpackChunkName: "Home" */ '../views/login/Inputpwd.vue')
-      },
-      {
-        path: '/orders',
-        name: 'orders',
-        meta: {
-          title: '订单管理'
-        },
-        component: () => import(/* webpackChunkName: "Order" */ '../views/order/Orders.vue')
-      },
-      {
-        path: '/statement',
-        name: 'statement',
-        meta: {
-          title: '对账单管理'
-        },
-        component: () => import(/* webpackChunkName: "Statement" */ '../views/statement/Statement.vue')
-      },
-      {
-        path: '/policy',
-        name: 'policy',
-        meta: {
-          title: '专项扣减'
-        },
-        component: () => import(/* webpackChunkName: "Policy" */ '../views/policy/Policy.vue')
+        // import 中的注释名称是为了 是否将相同名称的组件打包到同一个异步文件中
+        component: () => import(/* webpackChunkName: "Home" */ '../views/home/Sticky.vue')
       }
     ]
   },

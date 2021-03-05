@@ -16,7 +16,7 @@ axios.interceptors.response.use(function(response) {
     if(response.status === 200){
         if(response.data && response.data.data && response.data.data.list){
             response.data.data = response.data.data.list;
-            result = response.data;
+            result = response.data.list;
         }
         result = response.data;
     }

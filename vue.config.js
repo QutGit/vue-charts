@@ -5,19 +5,14 @@ module.exports = {
   devServer: {
     open: false,
     host: '0.0.0.0',
-    port: 8080,
+    port: 8001,
     historyApiFallback: true,
     overlay: true,
     proxy: {
-      '/api': {
-        // target: 'http://61.155.157.162:9876',
-        // target: 'http://xsh.weibangong.site',
-        target: 'https://xshapitest.linlongyun.com',
+      '/webapi': {
+        target: 'http://localhost:3301',
         changeOrigin: true,
-        secure: false,
-        pathRewrite: {
-          '^/api': '',
-        },
+        secure: false
       },
       '/loginapi': {
         target: 'https://xshidtest.linlongyun.com',

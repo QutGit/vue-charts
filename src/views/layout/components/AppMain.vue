@@ -1,5 +1,5 @@
 <template>
-  <section class="app-main" :class="{'mt': menuType == 2}">
+  <section class="app-main" @scroll="onScroll" ref="appMain">
     <transition name="fade" :duration="500" mode="out-in">
       <keep-alive :include="cachedViews">
         <router-view :key="key" />
@@ -10,6 +10,7 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { EventBus } from '../../../utils/eventbus'
 
 export default {
   name: "AppMain",
@@ -40,6 +41,20 @@ export default {
     key() {
       return this.$route.path;
     }
+  },
+  methods: {
+    onScroll () {
+      const oContent = this.$refs.appMain
+      // 可视区高度
+      const windowH = oContent.clientHeight
+      // 滚动高度
+      const scrollH = oContent.scrollTop
+      // 总高度
+      const documentH = oContent.scrollHeight
+      if (windowH + scrollH >= documentH) {
+        EventBus.$emit('line_in_the_sand', true);
+      }
+    }
   }
 };
 </script>
@@ -60,12 +75,11 @@ export default {
 }
 
 .app-main {
-  min-height: calc(100vh - 284px);
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
   position: relative;
   overflow: auto;
-  min-width: 1200px;
 }
 .mt {
   // margin-top: 74px;

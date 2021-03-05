@@ -23,9 +23,9 @@ export default async function service(url,method = 'GET',params = {}){
     let access_token = localStorage.getItem("access_token");
     axios.defaults.headers.common['Authorization'] = `Bearer${access_token}`;
 
-    if(process.env.NODE_ENV === 'production'){
-      url = conf.loginHost + url;
-    }
+    // if(process.env.NODE_ENV === 'production'){
+    //   url = conf.loginHost + url;
+    // }
   }
 
   let aParams ={ method, url: `${ url }`};
@@ -34,21 +34,12 @@ export default async function service(url,method = 'GET',params = {}){
     method = "POST";
     aParams = { method: "POST", url: '/mock' + url};
   } else {
-    // 测试环境自动加前缀 /api
-    if(process.env.NODE_ENV === 'development'){
-      if(url.indexOf('/bumuApp') >= 0){
-        aParams.url = '/api' + url;
-      }else{
-        aParams.url = '/loginapi' + url;
-      }
-    }
+    aParams.url = url
     // 是否默认传入 userid跟token
     if(!params.isWrap){
       if(!isLogin){
         params.userId = userId;
         params.token = token;
-        // params.sign = token;
-        // params.timestamp = timestamp;
       }
     }else{
       delete params.isWrap;

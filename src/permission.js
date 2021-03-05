@@ -17,9 +17,9 @@ router.beforeEach( async (to, from, next) =>{
     }
     // 判断是否有用户信息 页面刷新时调用，这一块我的处理是刷新页面重新加载接口，也可以放到sessionStorage里面，减少接口请求
     let userInfo = store.state.user.userInfo;
-    if(userId && !userInfo.id){
-      await store.dispatch("user/getUserInfo");
-    }
+    // if(userId && !userInfo.id){
+    //   await store.dispatch("user/getUserInfo");
+    // }
     // 切到首页是显示透明菜单
     if(to.fullPath == '/'){
       setTimeout(() =>{

@@ -4,9 +4,8 @@ import store from './store/index'
 import router from './router/index'
 import './registerServiceWorker'
 import './permission';
-import ElementUI from 'element-ui';
-import VCharts from 'v-charts';
 import './styles/index.scss'
+import vueWaterfallEasy from 'vue-waterfall-easy'
 
 Vue.config.productionTip = false;
  
@@ -22,12 +21,14 @@ if (process.env.NODE_ENV === 'development') {
   mockXHR()
 }
 
-Vue.use(VCharts)
-Vue.use(ElementUI);
+Vue.use(vueWaterfallEasy)
 
 new Vue({
   el: '#app',
   router,
+  components: {
+    vueWaterfallEasy
+  },
   store,
   render: h => h(App)
 })

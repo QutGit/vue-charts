@@ -1,19 +1,19 @@
 const Mock = require('mockjs');
 const Random = Mock.Random;
 
-// 首页 在保人数，增员人数，减员人数
-let getOnEmpCount = {
-  addEmp: Random.natural(1,1000),
-  offEmp: Random.natural(1,1000),
-  onEmp: Random.natural(1,1000)
+let categorys = [];
+let cs = Random.natural(5,8);
+for(let i = 1; i <= cs; i++){
+  let cat = {
+    'termId|+1': 1,
+    iconUrl: 'http://qiniu.zuolinju.com/kama/kama.png',
+    'name|1': ["人物", "风景", "街拍", "抽象", "艺术", "人像", "人文", "私房", "恋人", "儿童", "风光", "旅行", "城市", "建筑", "生活", "水下", "街拍"],
+    'slug|1': ['person', 'view', 'street', 'abstract', 'art', 'person', 'cultural', 'private', 'lover', 'children'],
+    description: '摄影类'
+  }
+  categorys.push(cat);
 }
-// 服务信息 责任客服
-let getZrkf = {
-  'kfDh|1': /^1[0-9]{10}$/,
-  kfDz: `${Random.county(true)}${Random.natural(1,30)}号`,
-  kfEmail: Random.email(),
-  kfXm: Random.cname()
-}
+
 // 根据选择月份获取就近已出账单
 let latestYs = {
   'mxList|1-8': [{
@@ -73,12 +73,13 @@ function leftPad(m){
 }
 
 export default [{
-    url: '/mock/bumuApp/invoke/custInfo/getOnEmpCount',
+    url: '/mock/webapi/categorys',
     type: 'post',
     response: config => {
       return {
-        status: 1,
-        data: getOnEmpCount
+        code: 0,
+        msg: 'success',
+        list: categorys
       }
     }
   },
