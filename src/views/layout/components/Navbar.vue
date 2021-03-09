@@ -144,13 +144,12 @@ export default {
     background: none;
     width: 100%;
     height: 60px;
-    position: fixed;
-    // box-shadow: 0px 2px 4px 0px rgba(230, 230, 230, 0.5);
+    // position: fixed;
     background: #232a34;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1999;
+    // z-index: 1999;
     min-width: 1200px;
     .menu {
       width: 100%;

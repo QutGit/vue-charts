@@ -62,19 +62,53 @@ Number.prototype.toFixed = String.prototype.toFixed = function (decimal) {
 
 // 流下载
 export function downloadFile (blob, tagFileName, fileType) {
-    let downloadElement = document.createElement('a')
-    let href = blob
-    if (typeof blob == 'string') {
-      downloadElement.target = '_blank'
-    } else {
-      href = window.URL.createObjectURL(blob) //创建下载的链接
-    }
-    downloadElement.href = href
-    downloadElement.download = tagFileName + '.' + fileType //下载后文件名
-    document.body.appendChild(downloadElement)
-    downloadElement.click() //点击下载
-    document.body.removeChild(downloadElement) //下载完成移除元素
-    if (typeof blob != 'string') {
-      window.URL.revokeObjectURL(href) //释放掉blob对象
-    }
+  let downloadElement = document.createElement('a')
+  let href = blob
+  if (typeof blob == 'string') {
+    downloadElement.target = '_blank'
+  } else {
+    href = window.URL.createObjectURL(blob) //创建下载的链接
   }
+  downloadElement.href = href
+  downloadElement.download = tagFileName + '.' + fileType //下载后文件名
+  document.body.appendChild(downloadElement)
+  downloadElement.click() //点击下载
+  document.body.removeChild(downloadElement) //下载完成移除元素
+  if (typeof blob != 'string') {
+    window.URL.revokeObjectURL(href) //释放掉blob对象
+  }
+}
+
+// 获取文件后缀名
+export function getExt(filePath){
+	var startIndex = filePath.lastIndexOf(".")
+	if(startIndex != -1)
+		return filePath.substring(startIndex+1, filePath.length).toLowerCase()
+	else return ""
+}
+
+// 验证移动端
+export function isMobile () {
+  let info = navigator.userAgent;
+  let agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod", "iPad"];
+  for(let i = 0; i < agents.length; i++){
+    if(info.indexOf(agents[i]) >= 0) return true;
+  }
+  return false;
+}
+
+/**
+ * 判断是否支持webp格式图片
+ */
+ export function supportWebp() {
+  try {
+    return (
+      document
+        .createElement('canvas')
+        .toDataURL('image/webp', 0.5)
+        .indexOf('data:image/webp') === 0
+    )
+  } catch (err) {
+    return false
+  }
+}

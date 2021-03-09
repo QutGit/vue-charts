@@ -48,19 +48,16 @@ export default {
     const href = 'http://chuanda.zuolinju.com'
     const info = '大摄影家'
     this.imgsArr = [
-      {src: "https://qiniu.zuolinju.com/kama/pexels-taina%CC%81-bernard-3497525.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-emre-can-2110951.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-anna-shvets-4483103.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-evgeny-tchebotarev-2541310.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-anderson-guerra-1154198%20%281%29.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-wendy-wei-2020267.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-anni-roenkae-2832382.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-gustavo-fring-4241339.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-rfstudio-3817580%20%281%29.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-w-w-889839.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-ricardo-esquivel-1964471.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-motional-studio-1081685.jpg?imageView2/0/h/800", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-matheus-viana-2372982.jpg?imageView2/0/h/800", href, info}
+      {src: "https://qiniu.zuolinju.com/kama/pexels-taina%CC%81-bernard-3497525.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-emre-can-2110951.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-anna-shvets-4483103.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-evgeny-tchebotarev-2541310.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-wendy-wei-2020267.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-gustavo-fring-4241339.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-rfstudio-3817580%20%281%29.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-w-w-889839.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-ricardo-esquivel-1964471.jpg", href, info},
+      {src: "https://qiniu.zuolinju.com/kama/pexels-motional-studio-1081685.jpg", href, info}
     ]
 
     let arr = []

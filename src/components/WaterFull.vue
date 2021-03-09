@@ -2,7 +2,8 @@
   <div class="water-full">
     <div class="list" id="box" ref="waterFull">
       <div class="item" v-for="(item, index) in images" :key="index" @click="itemClick(item)">
-        <img :src="item.src" :style="{width: isMobile ? '100%' : imgWidth }" />
+        <!-- <img :src="item.src" :style="{width: isMobile ? '100%' : imgWidth }" /> -->
+        <zImage :src="item.src" class="img-item" :style="{width: isMobile ? '100%' : imgWidth }" />
         <slot></slot>
       </div>
     </div>
@@ -10,9 +11,11 @@
 </template>
 <script>
   import { EventBus } from '../utils/eventbus'
+  import zImage from '../components/Image' 
 
   export default {
     name: "WaterFull",
+    components: { zImage },
     props: {
       images: Array,
       more: Function,
