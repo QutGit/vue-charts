@@ -2,8 +2,7 @@
   <div class="water-full">
     <div class="list" id="box" ref="waterFull">
       <div class="item" v-for="(item, index) in images" :key="index" @click="itemClick(item)">
-        <!-- <img :src="item.src" :style="{width: isMobile ? '100%' : imgWidth }" /> -->
-        <zImage :src="item.src" class="img-item" :style="{width: isMobile ? '100%' : imgWidth }" />
+        <zImage :src="item.imgUrl" class="img-item" :style="{width: isMobile ? '100%' : imgWidth }" />
         <slot></slot>
       </div>
     </div>
@@ -11,7 +10,7 @@
 </template>
 <script>
   import { EventBus } from '../utils/eventbus'
-  import zImage from '../components/Image' 
+  import zImage from '../components/Image'
 
   export default {
     name: "WaterFull",
@@ -89,7 +88,7 @@
             // left值就是最小列距离左边的距离
             items[i].style.left = items[index].offsetLeft + 'px';
 
-            // 5- 修改最小列的高度 
+            // 5- 修改最小列的高度
             // 最小列的高度 = 当前自己的高度 + 拼接过来的高度 + 间隙的高度
             arr[index] = arr[index] + items[i].offsetHeight + this.gap;
           }

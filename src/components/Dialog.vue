@@ -51,9 +51,13 @@
   height: 100%;
   width: 100%;
   position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 9900;
   background-color: rgba($color: #000000, $alpha: 0.9);
-  
+
   .dialog-content {
     position: absolute;
     top: 30px;

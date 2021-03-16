@@ -11,5 +11,5 @@ export default {
     whost: isDev() ? devApi : prodApi,
     loginHost: isDev() ? devId : prodId,
     secretKey: isDev() ? "bumuApp" : "bumuApp",
-    mock: true, // 启用mock数据
+    mock: false, // 启用mock数据
 }

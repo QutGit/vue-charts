@@ -7,7 +7,7 @@
           <p>免费下载</p>
         </div>
         <div class="tags">
-          <div class="item" v-for="(item, index) in categorys" :key="index">
+          <div class="item" v-for="(item, index) in categorys" :key="index" @click="skipFilter(item)">
             <img :src="item.iconUrl" />
             <span>{{item.name}}</span>
           </div>
@@ -26,7 +26,7 @@ import WaterFull from '../../components/WaterFull'
 import Dialog from '../../components/Dialog'
 import axios from 'axios'
 import { downloadFile } from '../../utils'
-import { getCategorys } from '../../utils/apis'
+import { getCategorys, getArticles } from '../../utils/apis'
 
 
 export default {
@@ -35,45 +35,50 @@ export default {
   data: function () {
     return {
       imgsArr: [],
-      tags: [],
       imgSrc: '',
       dialogDisplay: false,
-      categorys: []
+      categorys: [],
+      params: {
+        pageIndex: 1,
+        termId: '',
+        limit: 10,
+        deleted: 0,
+        offset: 0
+      }
     };
   },
   computed: {
-    
+
   },
   mounted() {
-    const href = 'http://chuanda.zuolinju.com'
-    const info = '大摄影家'
-    this.imgsArr = [
-      {src: "https://qiniu.zuolinju.com/kama/pexels-taina%CC%81-bernard-3497525.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-emre-can-2110951.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-anna-shvets-4483103.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-evgeny-tchebotarev-2541310.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-wendy-wei-2020267.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-gustavo-fring-4241339.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-rfstudio-3817580%20%281%29.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-w-w-889839.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-ricardo-esquivel-1964471.jpg", href, info},
-      {src: "https://qiniu.zuolinju.com/kama/pexels-motional-studio-1081685.jpg", href, info}
-    ]
-
-    let arr = []
-    for (let i = 0; i < 20; i++) {
-      arr.push({ id: i, title: `人像${i}`, url: 'http://qiniu.zuolinju.com/kama/kama.png' })
+    const termId = this.$route.query.ats
+    if (termId) {
+      this.params.termId = termId
     }
-    this.tags = arr
     this.getCatetories()
+    this.getList()
   },
   methods: {
-    loadMore () {
-      const imgages = this.imgsArr
-      this.imgsArr = this.imgsArr.concat(imgages)
+    async loadMore () {
+      const { limit } = this.params
+      let pageIndex = this.params.pageIndex
+      ++pageIndex
+      const offset = (pageIndex - 1) * limit
+      this.params.offset = offset
+      const res = await getArticles(this.params)
+      if (res && res.list.length) {
+        this.params.pageIndex = pageIndex
+        this.imgsArr = this.imgsArr.concat(res.list)
+      }
+    },
+    async getList() {
+      const res = await getArticles(this.params)
+      if (res && res.list) {
+        this.imgsArr = res.list
+      }
     },
     itemClick (item) {
-      this.imgSrc = item.src
+      this.imgSrc = item.imgUrl
       this.dialogDisplay = true
       console.log(item)
     },
@@ -89,13 +94,24 @@ export default {
       if (res && res.code === 0) {
         this.categorys = res.list
       }
+    },
+    // 链接跳转
+    skipFilter(item) {
+      this.params = {
+        pageIndex: 1,
+        limit: 10,
+        deleted: 0,
+        offset: 0,
+        termId: item.termId
+      }
+      this.$router.push(`?ats=${item.termId}`)
+      this.getList()
     }
   }
 };
 </script>
 <style lang="scss">
 .home {
-  background: #f5f5f5;
   height: 100%;
   width: 100%;
   display: flex;
@@ -165,7 +181,7 @@ export default {
     }
     .tags {
       width: 60%;
-    } 
+    }
   }
   @media (max-width: 900px) {
     .wrap {
@@ -174,7 +190,7 @@ export default {
       .menus {
         .tags {
           width: 100%;
-        } 
+        }
       }
     }
   }

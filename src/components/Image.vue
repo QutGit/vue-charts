@@ -30,10 +30,10 @@
       this.isImg = isImage
     },
     methods: {
-      
+
     }
   };
 </script>
 <style lang="scss">
-  
+
 </style>

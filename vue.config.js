@@ -14,6 +14,11 @@ module.exports = {
         changeOrigin: true,
         secure: false
       },
+      '/bossapi': {
+        target: 'http://localhost:3301',
+        changeOrigin: true,
+        secure: false
+      },
       '/loginapi': {
         target: 'https://xshidtest.linlongyun.com',
         // target: 'http://192.168.6.72:8080',
