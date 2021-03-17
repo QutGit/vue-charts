@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="menus">
         <div class="title">
-          <h2>CAMERA</h2>
+          <h2 @click="skipHome">CAMERA</h2>
           <p>免费下载</p>
         </div>
         <div class="tags">
@@ -13,16 +13,17 @@
           </div>
         </div>
       </div>
-      <water-full :images="imgsArr" :more="loadMore" :click="itemClick" imgWidth="400px">
+      <water-full2 :images="imgsArr" :more="loadMore" :click="itemClick" :isEnd="isEnd">
         <!-- <div>this is title</div> -->
-      </water-full>
+      </water-full2>
     </div>
     <Dialog :imgSrc="imgSrc" :display="dialogDisplay" @dialogClose="dialogClose" :downLoad="downLoadImage" />
   </div>
 </template>
 
 <script>
-import WaterFull from '../../components/WaterFull'
+// import WaterFull from '../../components/WaterFull'
+import WaterFull2 from '../../components/WaterFull2'
 import Dialog from '../../components/Dialog'
 import axios from 'axios'
 import { downloadFile } from '../../utils'
@@ -31,11 +32,12 @@ import { getCategorys, getArticles } from '../../utils/apis'
 
 export default {
   name: "home",
-  components: { WaterFull, Dialog },
+  components: { WaterFull2, Dialog },
   data: function () {
     return {
       imgsArr: [],
       imgSrc: '',
+      isEnd: false,
       dialogDisplay: false,
       categorys: [],
       params: {
@@ -65,10 +67,14 @@ export default {
       ++pageIndex
       const offset = (pageIndex - 1) * limit
       this.params.offset = offset
-      const res = await getArticles(this.params)
-      if (res && res.list.length) {
-        this.params.pageIndex = pageIndex
-        this.imgsArr = this.imgsArr.concat(res.list)
+      if (!this.isEnd) {
+        const res = await getArticles(this.params)
+        if (res && res.list.length) {
+          this.params.pageIndex = pageIndex
+          this.imgsArr = this.imgsArr.concat(res.list)
+        } else {
+          this.isEnd = true
+        }
       }
     },
     async getList() {
@@ -104,8 +110,10 @@ export default {
         offset: 0,
         termId: item.termId
       }
-      this.$router.push(`?ats=${item.termId}`)
-      this.getList()
+      window.location.href= `?ats=${item.termId}`
+    },
+    skipHome() {
+      window.location.href= '/'
     }
   }
 };
@@ -118,6 +126,7 @@ export default {
   justify-content: center;
   .wrap {
     width: 100%;
+    // height: 100%;
     padding: 0 50px;
     .menus {
       height: 200px;
@@ -126,6 +135,7 @@ export default {
       text-align: center;
       .title {
         > h2 {
+          cursor: pointer;
           padding-top: 50px;
           font-weight: 600;
           font-size: 26px;
@@ -140,10 +150,10 @@ export default {
         margin-top: 30px;
         display: inline-flex;
         white-space: nowrap;
-        width: 80%;
+        width: 100%;
         overflow-x: auto;
         height: 40px;
-        justify-content: center;
+        // justify-content: center;
         &::-webkit-scrollbar {
           display: none;
         }
@@ -177,7 +187,7 @@ export default {
   }
   @media (min-width: 1900px) {
     .wrap {
-      width: 2300px;
+      width: 2000px;
     }
     .tags {
       width: 60%;

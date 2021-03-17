@@ -145,13 +145,13 @@ export default {
     width: 100%;
     height: 60px;
     // position: fixed;
-    background: #232a34;
     top: 0;
     left: 0;
     right: 0;
     // z-index: 1999;
-    min-width: 1200px;
+    // min-width: 1200px;
     .menu {
+      background: #232a34;
       width: 100%;
       padding: 0 24px;
       display: flex;

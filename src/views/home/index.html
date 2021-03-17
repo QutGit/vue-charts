@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* css样式 */
+    body {
+      background: #e5e5e5;
+    }
+    /* 瀑布流最外层 */
+    #root {
+      margin: 0 auto;
+      width: 1200px;
+      column-count: 5;
+      column-width: 240px;
+      column-gap: 20px;
+    }
+    /* 每一列图片包含层 */
+    .item {
+      margin-bottom: 10px;
+      /* 防止多列布局，分页媒体和多区域上下文中的意外中断 */
+      break-inside: avoid;
+      background: #fff;
+    }
+    .item:hover {
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, .5);
+    }
+    /* 图片 */
+    .itemImg {
+      width: 100%;
+      vertical-align: middle;
+    }
+    /* 图片下的信息包含层 */
+    .userInfo {
+      padding: 5px 10px;
+    }
+    .avatar {
+      vertical-align: middle;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+    .username {
+      margin-left: 5px;
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, .3);
+    }
+
+    .waterfall-width-column {
+      column-count: 4;
+      column-gap: 10px;
+    }
+    .image-box {
+      margin-top: 10px;
+    }
+    .image-box img {
+      display: block;
+      width: 100%;
+    }
+
+  </style>
+</head>
+  <body>
+    <!-- <div id="root">
+      <div class="item">
+        <img class="itemImg" src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD1.jpeg" alt=""/>
+        <div class="userInfo">
+          <span class="username">牵起你的左手护着你</span>
+        </div>
+      </div>
+      <div class="item">
+        <img class="itemImg" src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt=""/>
+        <div class="userInfo">
+          <span class="username">牵起你的左手护着你</span>
+        </div>
+      </div>
+      <div class="item">
+        <img class="itemImg" src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD31.jpeg" alt=""/>
+        <div class="userInfo">
+          <span class="username">牵起你的左手护着你</span>
+        </div>
+      </div>
+      <div class="item">
+        <img class="itemImg" src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD1.jpeg" alt=""/>
+        <div class="userInfo">
+          <span class="username">牵起你的左手护着你</span>
+        </div>
+      </div>
+      <div class="item">
+        <img class="itemImg" src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt=""/>
+        <div class="userInfo">
+          <span class="username">牵起你的左手护着你</span>
+        </div>
+      </div>
+      <div class="item">
+        <img class="itemImg" src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD-%E6%97%A5%E7%B3%BB11.jpeg" alt=""/>
+        <div class="userInfo">
+          <span class="username">牵起你的左手护着你</span>
+        </div>
+      </div>
+      <div class="item">
+        <img class="itemImg" src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD212.jpeg" alt=""/>
+        <div class="userInfo">
+          <span class="username">牵起你的左手护着你</span>
+        </div>
+      </div>
+    </div> -->
+    <div class="waterfall-width-column">
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD1.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD-%E6%97%A5%E7%B3%BB11.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD31.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD31.jpeg" alt="" />
+      </div>
+      <div class="image-box">
+        <img src="https://qiniu.zuolinju.com/kama/%E7%9C%9F%E4%BC%9A%E7%A9%BF-%E7%A9%BF%E6%90%AD2.jpeg" alt="" />
+      </div>
+    </div>
+  </body>
+</html>
