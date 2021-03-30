@@ -3,15 +3,15 @@
     <div class="list" v-if="images.length > 0">
       <div class="item animate__animated animate__fadeIn" v-for="(item, index) in images" :key="index" @click="itemClick(item)">
         <!-- <zImage :src="item.imgUrl" class="img-item" :style="{width: isMobile ? '100%' : imgWidth }" /> -->
-        <img :src="item.imgUrl" />
+        <zImage :src="item.imgUrl" class="img-item" />
         <slot></slot>
       </div>
     </div>
     <div v-else class="no-data">
-      ooh!您的相机被黑洞吸走啦~~
+      ooh! 您的相机被黑洞吸走啦~~
     </div>
     <div class="no-data" v-if="isEnd">
-      哎呀，已经没有啦~
+      哎呀，被你看光啦~
     </div>
   </div>
 </template>
@@ -87,12 +87,12 @@
     color: #a6aaad;
 
   }
-  @media (max-width: 800px) {
+  @media (max-width: 300px) {
     .list {
       column-count: 1;
     }
   }
-  @media (max-width: 1200px) {
+  @media (max-width: 1920px) {
     .list {
       column-count: 3;
     }

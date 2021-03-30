@@ -2,10 +2,10 @@
   <div class="home">
     <div class="wrap">
       <div class="menus">
-        <div class="title">
+        <!-- <div class="title">
           <h2 @click="skipHome">CAMERA</h2>
           <p>免费下载</p>
-        </div>
+        </div> -->
         <div class="tags">
           <div class="item" v-for="(item, index) in categorys" :key="index" @click="skipFilter(item)">
             <img :src="item.iconUrl" />
@@ -13,9 +13,10 @@
           </div>
         </div>
       </div>
-      <water-full2 :images="imgsArr" :more="loadMore" :click="itemClick" :isEnd="isEnd">
-        <!-- <div>this is title</div> -->
-      </water-full2>
+      <!-- <water-full2 :images="imgsArr" :more="loadMore" :click="itemClick" :isEnd="isEnd">
+        <div>this is title</div>
+      </water-full2> -->
+      <vue-waterfall-easy :imgsArr="imgsArr" @scrollReachBottom="loadMore"></vue-waterfall-easy>
     </div>
     <Dialog :imgSrc="imgSrc" :display="dialogDisplay" @dialogClose="dialogClose" :downLoad="downLoadImage" />
   </div>
@@ -23,7 +24,8 @@
 
 <script>
 // import WaterFull from '../../components/WaterFull'
-import WaterFull2 from '../../components/WaterFull2'
+// import WaterFull2 from '../../components/WaterFull2'
+import vueWaterfallEasy from 'vue-waterfall-easy'
 import Dialog from '../../components/Dialog'
 import axios from 'axios'
 import { downloadFile } from '../../utils'
@@ -32,7 +34,7 @@ import { getCategorys, getArticles } from '../../utils/apis'
 
 export default {
   name: "home",
-  components: { WaterFull2, Dialog },
+  components: { vueWaterfallEasy, Dialog },
   data: function () {
     return {
       imgsArr: [],
@@ -43,7 +45,7 @@ export default {
       params: {
         pageIndex: 1,
         termId: '',
-        limit: 10,
+        limit: 20,
         deleted: 0,
         offset: 0
       }
@@ -70,8 +72,12 @@ export default {
       if (!this.isEnd) {
         const res = await getArticles(this.params)
         if (res && res.list.length) {
+          let list = res.list
+          list.forEach((item) => {
+            item.src = item.imgUrl
+          })
           this.params.pageIndex = pageIndex
-          this.imgsArr = this.imgsArr.concat(res.list)
+          this.imgsArr = this.imgsArr.concat(list)
         } else {
           this.isEnd = true
         }
@@ -80,7 +86,11 @@ export default {
     async getList() {
       const res = await getArticles(this.params)
       if (res && res.list) {
-        this.imgsArr = res.list
+        let list = res.list
+        list.forEach((item) => {
+          item.src = item.imgUrl
+        })
+        this.imgsArr = list
       }
     },
     itemClick (item) {
@@ -129,8 +139,8 @@ export default {
     // height: 100%;
     padding: 0 50px;
     .menus {
-      height: 200px;
-      margin-top: 60px;
+      // height: 200px;
+      // margin-top: 60px;
       margin-bottom: 14px;
       text-align: center;
       .title {

@@ -10,11 +10,12 @@ export default async function service(url,method = 'GET',params = {}){
   let timestamp = Date.now();
   // 判断是否是登录类型接口，签名不一样需要单独处理
   let isLogin = false;
-  if(url.indexOf('/bumuApp') >= 0){
+  if(url.indexOf('/webapi') >= 0 || url.indexOf('/bossapi') >= 0){
     let secretKey = conf.secretKey;
     let apiMethod = url.substr(url.lastIndexOf('/')+1);
     let md5Str = userId + apiMethod + secretKey;
     token = md5(md5Str);
+    url = conf.whost + url;
     if(process.env.NODE_ENV === 'production'){
       url = conf.whost + url;
     }
@@ -38,8 +39,8 @@ export default async function service(url,method = 'GET',params = {}){
     // 是否默认传入 userid跟token
     if(!params.isWrap){
       if(!isLogin){
-        params.userId = userId;
-        params.token = token;
+        // params.userId = userId;
+        // params.token = token;
       }
     }else{
       delete params.isWrap;

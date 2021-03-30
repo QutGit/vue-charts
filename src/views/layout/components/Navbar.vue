@@ -3,11 +3,13 @@
     <div class="navbar" :class="{'white-bg': menu_type == 2}">
       <div class="menu clearfix">
         <div class="logo">
-          <a href="/">
+          <!-- <a href="/">
             <img src="../../../assets/kama.png" alt="穿搭" />
-          </a>
+          </a> -->
           <h2>CAMERA</h2>
+          <p>免费下载</p>
         </div>
+        <!-- <div class="tags">more</div> -->
         <!-- <ul>
           <li v-for="(item, index) in menus" :key="index">
             <router-link
@@ -143,7 +145,7 @@ export default {
   .navbar {
     background: none;
     width: 100%;
-    height: 60px;
+    height: 100px;
     // position: fixed;
     top: 0;
     left: 0;
@@ -153,13 +155,15 @@ export default {
     .menu {
       background: #232a34;
       width: 100%;
-      padding: 0 24px;
-      display: flex;
+      padding: 6px 24px;
+      // display: flex;
       height: 100%;
-      align-items: center;
+      // align-items: center;
       .logo {
-        display: flex;
-        align-items: center;
+        // display: flex;
+        // align-items: center;
+        width: 100%;
+        text-align: center;
         a {
           display: inline-block;
           height: 100%;
@@ -171,12 +175,23 @@ export default {
           }
         }
         > h2 {
-          margin-left: 10px;
+          // margin-left: 10px;
           color: #fff;
-          width: 60px;
+          // width: 60px;
+          width: 100%;
           font-weight: 600;
           font-size: 20px;
         }
+        > p {
+          color: #a6aaad;
+          font-size: 12px;
+          margin-top: 4px;
+        }
+      }
+      .tags {
+        color: #fff;
+        margin-top: 10px;
+        text-align: center;
       }
       ul {
         flex: 1;

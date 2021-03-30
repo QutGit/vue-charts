@@ -2,11 +2,11 @@ function isDev(){
     return process.env.NODE_ENV === 'development' ? true : false;
 }
 // 开发环境域名
-let devApi = "http://localhost:3301"; // 业务
-let devId = "https://xshidtest.linlongyun.com";   // 登录
+let devApi = "http://kama.zuolinju.com:3302"; // 业务
+let devId = "http://kama.zuolinju.com:3302";   // 登录
 // 生产环境域名
-let prodApi = "https://xshapitest.linlongyun.com"; // 业务
-let prodId = "https://xshidtest.linlongyun.com";   // 登录
+let prodApi = "http://kama.zuolinju.com:3302"; // 业务
+let prodId = "http://kama.zuolinju.com:3302";   // 登录
 export default {
     whost: isDev() ? devApi : prodApi,
     loginHost: isDev() ? devId : prodId,
